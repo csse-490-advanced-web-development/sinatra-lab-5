@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   get '/tasks' do
     tasks = Task.all
-    erb :"tasks/index.html", locals: { tasks: Task.all }
+    erb :"tasks/index.html", locals: {tasks: tasks}
   end
 
   get '/tasks/new' do
@@ -10,29 +10,26 @@ class TasksController < ApplicationController
 
   post '/tasks' do
     task = Task.new(description: params[:description])
-
-    if task.save
-      redirect "/"
-    else
-      flash.now[:errors] = task.errors.full_messages.join("; ")
-      erb :"tasks/new.html"
+    if not task.save then
+      flash[:errors] = task.errors.full_messages.join("; ")
+      redirect "/tasks/new"
     end
+    redirect "/"
   end
 
   get '/tasks/:id' do
     task = Task.find(params[:id])
-    erb :"tasks/edit.html", locals: { task: task }
+    erb :"tasks/edit.html", locals: {task: task}
   end
 
   put '/tasks/:id' do
     task = Task.find(params[:id])
     task.description = params[:description]
-    if task.save
-      redirect "/"
-    else
-      flash.now[:errors] = task.errors.full_messages.join("; ")
-      erb :"tasks/edit.html", locals: { task: task }
+    if not task.save then
+      flash[:errors] = task.errors.full_messages.join("; ")
+      redirect "/tasks/#{params[:id]}"
     end
+    redirect "/"
   end
 
   delete '/tasks/:id' do

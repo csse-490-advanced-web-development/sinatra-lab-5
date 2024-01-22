@@ -3,11 +3,11 @@
   <input type="hidden" name="_method" value="PUT">
   <label for="description">Task Description</label>
   <input type="text" name="description" id="description" value="<%= task.description %>">
-  <input type="submit" value="Save">
+  <button type="submit">Save</button>
 </form>
 
 
 <form method="POST" action="/tasks/<%= task.id %>" enctype="multipart/form-data">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
+  <button type="submit">Delete</button>
 </form>
