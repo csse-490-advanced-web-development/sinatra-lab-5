@@ -21,3 +21,5 @@ group :test do
   gem 'rspec'
   gem 'selenium-webdriver'
 end
+
+gem "erubi", "~> 1.12"
