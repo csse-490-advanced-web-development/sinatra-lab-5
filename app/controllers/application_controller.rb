@@ -1,8 +1,10 @@
 require './config/environment'
+require 'erubi'
 
 class ApplicationController < Sinatra::Application
   configure do
     set :public_folder, 'public'
+    set :erb, :escape_html => true
     set :views, 'app/views'
     logger = Logger.new(File.open("#{root}/../log/#{environment}.log", 'a'))
     logger.level = Logger::DEBUG unless production?
