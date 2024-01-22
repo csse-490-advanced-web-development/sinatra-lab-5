@@ -1,4 +1,7 @@
 require './config/environment'
+require 'erubi'
+
+set :erb, :escape_html => true
 
 class ApplicationController < Sinatra::Application
   configure do
