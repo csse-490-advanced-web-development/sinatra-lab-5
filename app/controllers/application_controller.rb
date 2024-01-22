@@ -1,4 +1,5 @@
 require './config/environment'
+require 'erubi'
 
 class ApplicationController < Sinatra::Application
   configure do
