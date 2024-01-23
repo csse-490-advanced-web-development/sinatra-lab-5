@@ -45,6 +45,7 @@ GEM
     diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
+    erubi (1.12.0)
     ffi (1.16.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -131,6 +132,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  arm64-darwin-22
   arm64-darwin-23
   x86_64-linux
 
@@ -139,6 +141,7 @@ DEPENDENCIES
   capybara-screenshot
   database_cleaner-active_record
   debug
+  erubi
   pg
   puma
   rake
