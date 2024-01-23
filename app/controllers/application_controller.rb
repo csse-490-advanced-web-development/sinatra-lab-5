@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack/protection'
 # require 'erubi'
 
 
@@ -15,7 +16,7 @@ class ApplicationController < Sinatra::Application
     enable :sessions
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
-    # use Rack::Protection
+    #use Rack::Protection
     # # `use Rack::Protection` automatically enables all modules except for the
     # # following, which have to be enabled explicitly
     # use Rack::Protection::AuthenticityToken
