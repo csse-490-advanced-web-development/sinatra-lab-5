@@ -1,8 +1,6 @@
 require './config/environment'
 require 'erubi'
 
-set :erb, :escape_html => true
-
 class ApplicationController < Sinatra::Application
   configure do
     set :public_folder, 'public'
@@ -11,6 +9,7 @@ class ApplicationController < Sinatra::Application
     logger.level = Logger::DEBUG unless production?
     set :logger, logger
     ActiveRecord::Base.logger = logger
+    set :erb, :escape_html => true
     enable :sessions
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
@@ -31,5 +30,11 @@ class ApplicationController < Sinatra::Application
 
   get '/' do
     redirect "/tasks"
+  end
+
+  helpers do
+    def hattr(text)
+      Rack::Utils.escape_path(text.to_s)
+    end
   end
 end
