@@ -1,4 +1,5 @@
 require './config/environment'
+require 'erubi'
 
 class ApplicationController < Sinatra::Application
   configure do
@@ -9,6 +10,7 @@ class ApplicationController < Sinatra::Application
     set :logger, logger
     ActiveRecord::Base.logger = logger
     enable :sessions
+    set :erb, :escape_html => true
   end
 
   get '/' do
