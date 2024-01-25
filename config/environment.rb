@@ -1,4 +1,4 @@
-ENV['APP_ENV'] ||= "development"
+ENV['APP_ENV'] ||= ENV['RACK_ENV'] or "development"
 SINATRA_ROOT ||= File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
 require 'bundler/setup'
