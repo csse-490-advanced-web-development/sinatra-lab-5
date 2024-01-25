@@ -44,6 +44,8 @@ feature "Managing Tasks", js: true do
 
     # Implementation Notes/Hints:
     #
+    # 0. You must implement a control to globally prevent this security risk, rather than just fixing it in this one place.
+    #
     # 1. Read "How do I automatically escape HTML?" in the SinatraRB FAQS: https://sinatrarb.com/faq.html#escape_html
     #
     # 2. Use the gem 'erubi' (not 'erubis'!) and add it to the project by including it in the Gemfile
