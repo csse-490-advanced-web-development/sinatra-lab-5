@@ -1,12 +1,12 @@
 require './config/environment'
 require 'rack/protection'
-# require 'erubi'
+require 'erubi'
 
 
 
 class ApplicationController < Sinatra::Application
   configure do
-    # set :erb, :escape_html => true
+    set :erb, :escape_html => true
     set :public_folder, 'public'
     set :views, 'app/views'
     logger = Logger.new(File.open("#{root}/../log/#{environment}.log", 'a'))
@@ -16,13 +16,14 @@ class ApplicationController < Sinatra::Application
     enable :sessions
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
-    #use Rack::Protection
+    # use Rack::Protection
     # # `use Rack::Protection` automatically enables all modules except for the
     # # following, which have to be enabled explicitly
-    # use Rack::Protection::AuthenticityToken
-    # use Rack::Protection::EscapedParams
-    # use Rack::Protection::FormToken
-    # use Rack::Protection::RemoteReferrer
+    use Rack::Protection
+    use Rack::Protection::AuthenticityToken
+    use Rack::Protection::EscapedParams
+    use Rack::Protection::FormToken
+    use Rack::Protection::RemoteReferrer
     #
     # Implementation Note/Hint:
     #
