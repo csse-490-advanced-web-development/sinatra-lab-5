@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "bcrypt"
 gem "erubi"
 gem "pg"
 gem "puma"
