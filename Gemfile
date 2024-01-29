@@ -10,7 +10,6 @@ gem "rake"
 gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
-gem "erubi"
 
 group :development do
   gem 'rerun'
