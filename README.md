@@ -60,6 +60,8 @@ $ heroku create
 # Create the postgres database
 $ heroku addons:create heroku-postgresql:mini
 
+$ heroku run rake db:migrate
+
 $ git push heroku main
 
 $ heroku open
