@@ -19,7 +19,7 @@ require_relative '../spec_helper'
 #   - Hint: `flash[:notice] = "Thanks for signing up! You may now log in!"`
 
 feature "User Authentication", js: true do
-  scenario "signing up successfully and then logging in", skip: "Step 3: Unskip this test and read the instructions above" do
+  scenario "signing up successfully and then logging in" do
     visit "/"
     click_link "Sign Up"
     # ^-- This new link is in app/views/layout.erb
