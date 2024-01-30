@@ -4,6 +4,7 @@ require 'erubi'
 
 
 
+
 class ApplicationController < Sinatra::Application
   configure do
     set :erb, :escape_html => true
@@ -15,20 +16,13 @@ class ApplicationController < Sinatra::Application
     ActiveRecord::Base.logger = logger
     enable :sessions
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
-    #
-    # use Rack::Protection
-    # # `use Rack::Protection` automatically enables all modules except for the
-    # # following, which have to be enabled explicitly
     use Rack::Protection
     use Rack::Protection::AuthenticityToken
-    use Rack::Protection::EscapedParams
+    # removed to allow for escaping of HTML tags
+    # use Rack::Protection::EscapedParams
     use Rack::Protection::FormToken
     use Rack::Protection::RemoteReferrer
-    #
-    # Implementation Note/Hint:
-    #
-    # You will have to update your forms to include an AuthenticityToken,
-    # per the documentation for Rack::Protection::AuthenticityToken:
+    # Auth tokens: 
     # https://sinatrarb.com/protection/authenticity_token
   end
 
