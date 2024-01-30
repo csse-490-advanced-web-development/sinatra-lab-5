@@ -1,6 +1,19 @@
-<h1>Add a New Task</h1>
-<form method="POST" action="/tasks" enctype="multipart/form-data">
-  <label for="description">Task Description</label>
-  <input type="text" name="description" id="description">
-  <input type="submit" value="Save">
+# <h1>Add a New Task</h1>
+# <form method="POST" action="/tasks" enctype="multipart/form-data">
+# <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>" />
+#   <label for="description">Task Description</label>
+#   <input type="text" name="description" id="description">
+#   <input type="submit" value="Save">
+# </form>
+
+<h1>Sign Up</h1>
+<form method="POST" action="/users" enctype="multipart/form-data">
+  <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" value="<%= email %>">
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password">
+  <label for="password-confirmation">Confirm Password</label>
+  <input type="password" name="password_confirmation" id="password-confirmation">
+  <button type="submit">Sign Up</button>
 </form>
