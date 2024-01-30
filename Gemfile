@@ -11,6 +11,7 @@ gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
 gem "erubi"
+gem 'securerandom'
 
 group :development do
   gem 'rerun'
