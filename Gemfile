@@ -10,6 +10,7 @@ gem "rake"
 gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
+gem 'securerandom'
 
 group :development do
   gem 'rerun'
