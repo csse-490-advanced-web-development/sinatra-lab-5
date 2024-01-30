@@ -1,5 +1,6 @@
 require './config/environment'
 require 'erubi'
+require 'rack/protection'
 
 set :erb, :escape_html => true
 
