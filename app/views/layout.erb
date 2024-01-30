@@ -15,8 +15,14 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
+    <% if session[:user_id].nil? %>
     <a href="/users/new">Sign Up</a>
     <a href="/sessions/new">Sign In</a>
+    <% end %>
+    <% if !session[:user_id].nil? %>
+    <button onclick="location.href='/sessions/delete'" type="button">
+         Sign Out</button>
+    <% end %>
   </div>
   <div class="container">
     <%== styled_flash %>
