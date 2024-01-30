@@ -15,8 +15,12 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
-    <a href="/users/new">Sign Up</a>
-    <a href="/sessions/new">Sign In</a>
+    <% if session[:user_id] %>
+      <button onclick="window.location.href='/sessions/destroy'">Sign Out</button>
+    <% else %>
+      <a href="/users/new">Sign Up</a>
+      <a href="/sessions/new">Sign In</a>
+    <% end %>
   </div>
   <div class="container">
     <%= styled_flash %>
