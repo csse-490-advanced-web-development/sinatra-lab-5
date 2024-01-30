@@ -33,7 +33,6 @@ feature "User Authentication", js: true do
     #     actually created.  Strictly speaking, this doesn't belong in an integration test because
     #     integration tests are written from the perspective of the end-user, and they wouldn't be
     #     able to look into the database.
-    skip "We will move on to the logging in part of the task next"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "example.com is a great domain to use for testing"
     click_button "Log In"
@@ -41,7 +40,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign Up")
   end
 
-  scenario "sign up failure", skip: "Step 3: Unskip this test and read the instructions above" do
+  scenario "sign up failure" do
     visit "/"
     click_link "Sign Up"
     # We are entirely skipping filling in the sign up form,

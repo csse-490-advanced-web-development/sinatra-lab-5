@@ -1,12 +1,12 @@
 <h1>Create a new account</h1>
-<form method="POST" action="/tasks" enctype="multipart/form-data">
+<form method="POST" action="/users" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
   <label for="email">Email</label>
-  <input type="text" name="email" id="email">
+  <input type="text" name="email" id="email" value="<%= @email %>">
    <label for="password">Password</label>
   <input type="password" name="password" id="password">
- <label for="confirmPassword">Confirm Password</label>
-  <input type="password" name="confirmPassword" id="confirmPassword">
+ <label for="password_confirmation">Confirm Password</label>
+  <input type="password" name="password_confirmation" id="password_confirmation">
   <input type="submit" value="Sign Up">
 
 </form>
