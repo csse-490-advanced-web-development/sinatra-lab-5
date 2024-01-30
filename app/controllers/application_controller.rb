@@ -19,12 +19,7 @@ class ApplicationController < Sinatra::Application
     use Rack::Protection::AuthenticityToken
     use Rack::Protection::FormToken
     use Rack::Protection::RemoteReferrer
-    #
-    # Implementation Note/Hint:
-    #
-    # You will have to update your forms to include an AuthenticityToken,
-    # per the documentation for Rack::Protection::AuthenticityToken:
-    # https://sinatrarb.com/protection/authenticity_token
+    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
   get '/' do
