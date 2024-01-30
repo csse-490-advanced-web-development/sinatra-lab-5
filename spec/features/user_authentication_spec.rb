@@ -69,7 +69,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign Up")
   end
 
-  scenario "Signing In with Incorrect Credentials" do #, skip: "Step 5: Unskip Me" do
+  scenario "Signing In with Incorrect Credentials" do 
     User.create!(email: "jaclyn@example.com", password: "Password!!!!", password_confirmation: "Password!!!!")
     visit "/"
     click_link "Sign In"
@@ -86,7 +86,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign In")
   end
 
-  scenario "Signing Out" do #, skip: "Step 6: Unskip Me" do
+  scenario "Signing Out" do
     password = "Password!!!!"
     user = User.create!(email: "jaclyn@example.com", password: password, password_confirmation: password)
     login_as(user, password)
