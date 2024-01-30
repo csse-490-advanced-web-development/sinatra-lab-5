@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     post '/users' do
 	@email = params[:email]
-	user = User.new(email: params[:email], password: params[:password])
+	user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
 	    if user.save
 		flash[:notice] = "Thanks for signing up! You may now log in!"
 		redirect "/sessions/new"
