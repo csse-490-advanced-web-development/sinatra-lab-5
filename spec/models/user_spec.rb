@@ -42,6 +42,7 @@ describe "User", "Step 4: Unskip this.  I prefilled the model specs for you to m
 
       it { user.should_not be_valid }
       it { user.errors[:email].should include "is not a valid email address" }
+      # Hint: `validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is not a valid email address" }`
     end
   end
 end

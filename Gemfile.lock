@@ -109,6 +109,7 @@ GEM
     rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    securerandom (0.3.1)
     selenium-webdriver (4.16.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -148,6 +149,7 @@ DEPENDENCIES
   rake
   rerun
   rspec
+  securerandom
   selenium-webdriver
   sinatra
   sinatra-activerecord
