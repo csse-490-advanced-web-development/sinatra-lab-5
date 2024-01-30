@@ -33,7 +33,7 @@ feature "User Authentication", js: true do
     #     actually created.  Strictly speaking, this doesn't belong in an integration test because
     #     integration tests are written from the perspective of the end-user, and they wouldn't be
     #     able to look into the database.
-    skip "We will move on to the logging in part of the task next"
+    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "example.com is a great domain to use for testing"
     click_button "Log In"
@@ -61,11 +61,40 @@ feature "User Authentication", js: true do
     click_button "Sign Up"
     page.should have_content("Thanks for signing up! You may now log in!")
 
-    skip "We will move on to the logging in part of the task next"
+    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "rosemary@example.com"
     fill_in "Password", with: "Password1"
     click_button "Log In"
     page.should have_content("You are logged in as rosemary@example.com")
     page.should_not have_content("Sign Up")
+  end
+
+  scenario "Signing In with Incorrect Credentials" do #, skip: "Step 5: Unskip Me" do
+    User.create!(email: "jaclyn@example.com", password: "Password!!!!", password_confirmation: "Password!!!!")
+    visit "/"
+    click_link "Sign In"
+    fill_in "Email", with: "jaclyn@example.com"
+    fill_in "Password", with: "Not the real password"
+    click_button "Log In"
+    page.should have_content("Invalid email or password")
+    # Confirm that trying again will succeed, and that
+    # the form value for email been retained across pages
+    find_field("Email").value.should == "jaclyn@example.com"
+    fill_in "Password", with: "Password!!!!"
+    click_button "Log In"
+    page.should have_content("You are logged in as jaclyn@example.com")
+    page.should_not have_content("Sign In")
+  end
+
+  scenario "Signing Out" do #, skip: "Step 6: Unskip Me" do
+    password = "Password!!!!"
+    user = User.create!(email: "jaclyn@example.com", password: password, password_confirmation: password)
+    login_as(user, password)
+    page.should_not have_content("Sign In")
+    page.should have_button("Sign Out")
+    click_button("Sign Out")
+    page.should have_content("You have been logged out.")
+    page.should have_content("Sign In")
+    page.should_not have_content("Sign Out")
   end
 end
