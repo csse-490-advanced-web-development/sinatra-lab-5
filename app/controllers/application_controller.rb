@@ -1,6 +1,5 @@
 require './config/environment'
 require 'erubi'
-require 'rack/protection'
 
 set :erb, :escape_html => true
 
@@ -21,7 +20,7 @@ class ApplicationController < Sinatra::Application
     # # `use Rack::Protection` automatically enables all modules except for the
     # # following, which have to be enabled explicitly
     use Rack::Protection::AuthenticityToken
-    use Rack::Protection::EscapedParams
+    # use Rack::Protection::EscapedParams
     use Rack::Protection::FormToken
     use Rack::Protection::RemoteReferrer
     #
@@ -34,5 +33,11 @@ class ApplicationController < Sinatra::Application
 
   get '/' do
     redirect "/tasks"
+  end
+
+  helpers do
+    def current_user
+      User.find_by(id: session[:user_id])
+    end
   end
 end

@@ -14,6 +14,6 @@ class UsersController < ApplicationController
         redirect "/users/new"
       end
       flash[:notice] = "Thanks for signing up! You may now log in!"
-      redirect "/"
+      redirect "/sessions/new"
     end
   end
