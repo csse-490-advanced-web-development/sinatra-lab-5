@@ -2,9 +2,6 @@ require './config/environment'
 require 'rack/protection'
 require 'erubi'
 
-
-
-
 class ApplicationController < Sinatra::Application
   configure do
     set :erb, :escape_html => true
@@ -30,4 +27,12 @@ class ApplicationController < Sinatra::Application
   get '/' do
     redirect "/tasks"
   end
+
+  post '/sessions/signout' do
+    session[:user_id] = nil
+    puts("SIGN OUT")
+    flash[:notice] = "You have been logged out."
+    redirect "/"
+  end
+
 end

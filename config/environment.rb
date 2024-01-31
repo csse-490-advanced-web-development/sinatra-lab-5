@@ -7,6 +7,7 @@ Bundler.require(:default, ENV['APP_ENV'])
 require 'sinatra/activerecord'
 require 'sinatra/flash'
 require './app/controllers/application_controller'
+require './app/controllers/sessions_controller'
 
 
 # Equivalent to `require_all 'app'`
