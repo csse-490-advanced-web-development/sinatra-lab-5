@@ -31,5 +31,9 @@ class ApplicationController < Sinatra::Application
     def hattr(text)
       Rack::Utils.escape_path(text.to_s)
     end
+
+    def current_user
+      User.find_by(id: session[:user_id])
+    end
   end
 end
