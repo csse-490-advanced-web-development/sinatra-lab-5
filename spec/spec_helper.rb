@@ -57,3 +57,17 @@ def expect_task_list_to_be_exactly(*expected_todos)
   todos_text = todo_lis.map{|todo_li| todo_li.text}
   todos_text.should eq expected_todos
 end
+
+def login_as(user, password)
+  # FYI: Normally, in a helper like this, I would set the user_id
+  # in the session directly instead of going through the full
+  # login flow.  This dramatically speeds up test runtimes
+  # without diminishing the value of what is being tested.
+
+  visit "/"
+  click_link "Sign In"
+  fill_in "Email", with: user.email
+  fill_in "Password", with: password
+  click_button "Log In"
+  page.should have_content("You are logged in as #{user.email}")
+end
