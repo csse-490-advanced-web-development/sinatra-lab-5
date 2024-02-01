@@ -11,6 +11,7 @@ gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
 gem 'securerandom'
+gem 'bcrypt'
 
 group :development do
   gem 'rerun'
