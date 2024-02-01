@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class UsersController < ApplicationController
     get '/users/new' do
       erb :"users/new.html"
     end
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
         if user.save
             flash[:notice] = "Thanks for signing up! You may now log in!"
-            redirect "/"
+            redirect "/sessions/new"
         else
             flash.now[:errors] = user.errors.full_messages.join("; ")
             erb :"users/new.html", locals: {user: user}
