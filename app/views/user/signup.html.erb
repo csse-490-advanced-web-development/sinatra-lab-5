@@ -1,7 +1,11 @@
 <h1>Add a New Task</h1>
 <form method="POST" action="/users/new" enctype="multipart/form-data">
   <label for="email">Email</label>
-  <input type="text" name="email" id="email">
+  <% if defined?(user) %>
+    <input type="text" name="email" id="email" value="<%= user.email %>">
+  <% else %>
+    <input type="text" name="email" id="email">
+  <% end %>
   <label for="password">Password</label>
   <input type="text" name="password" id="password">
   <label for="confirmPassword">Confirm Password</label>
