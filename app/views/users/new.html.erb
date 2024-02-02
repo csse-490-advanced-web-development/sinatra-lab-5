@@ -1,0 +1,15 @@
+<h1>Sign Up</h1>
+<form method="POST" action="/users/new" enctype="multipart/form-data">
+<input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>" />
+    <label for="email">Email</label>
+    <% if defined?(user) %>
+        <input type="text" name="email" id="email" value="<%= user.email %>">
+    <% else %>    
+        <input type="text" name="email" id="email">
+    <% end %>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+    <label for="confirm">Confirm Password</label>
+    <input type="password" name="confirm" id="confirm">
+    <input type="submit" value="Sign Up">
+</form>

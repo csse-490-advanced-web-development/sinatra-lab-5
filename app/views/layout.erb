@@ -15,12 +15,19 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
-    <a href="/users/new">Sign Up</a>
-    <a href="/sessions/new">Sign In</a>
+    <% if not session[:user_id] %>
+      <a href="/users/new">Sign Up</a>
+      <a href="/sessions/new">Sign In</a>
+    <% else %>
+      <form method="post" action="/sessions/logout">
+        <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>" />
+        <button>Sign Out</button>
+      </form>
+    <% end %>
   </div>
   <div class="container">
-    <%= styled_flash %>
-    <%= yield %>
+    <%== styled_flash %>
+    <%== yield %>
   </div>
 </body>
 
