@@ -1,9 +1,9 @@
 name: "CI"
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "implement-features" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "implement-features" ]
 jobs:
   test:
     runs-on: ubuntu-latest
