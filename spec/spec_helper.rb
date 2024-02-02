@@ -5,6 +5,7 @@ require_relative '../config/environment'
 require 'rspec'
 require 'rack/test'
 
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.expect_with(:rspec) { |c| c.syntax = [:expect, :should] }
@@ -34,6 +35,8 @@ end
 # place.
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+require 'selenium-webdriver'
+
 
 def app
   Rack::Builder.parse_file('config.ru').first

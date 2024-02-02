@@ -15,8 +15,20 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
-    <a href="/users/new">Sign Up</a>
-    <a href="/sessions/new">Sign In</a>
+
+    <% if session[:loggedin] %>
+
+    <form method="post" action="/sessions" enctype="multipart/form-data">
+    <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">Sign Out</button>
+    </form>
+
+    <% else %>
+      <a href="/users/new">Sign Up</a>
+      <a href="/sessions/new">Sign In</a>
+    <% end %>
+
   </div>
   <div class="container">
     <%== styled_flash %>

@@ -12,6 +12,8 @@ gem "sinatra-activerecord"
 gem "sinatra-flash"
 gem 'securerandom'
 gem 'bcrypt'
+gem 'capybara'
+gem 'selenium-webdriver'
 
 group :development do
   gem 'rerun'
