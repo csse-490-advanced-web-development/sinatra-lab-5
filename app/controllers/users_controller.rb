@@ -29,10 +29,13 @@ class UsersController < ApplicationController
 
       user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
       if user.save
+        # flash[:notice] = "Thanks for signing up! You may now log in!"
         redirect '/sessions/new'
-        flash[:notice] = "Thanks for signing up! You may now log in!"
       else
+      # so what your typed for email can stay even if you get the password/confirmed passwd wrong  
+        @email = params[:email]
         flash.now[:errors] = user.errors.full_messages.join("; ")
+
         erb :"users/new.html"
         end
     end
