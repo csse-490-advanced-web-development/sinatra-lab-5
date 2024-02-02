@@ -12,7 +12,7 @@ require_relative '../spec_helper'
 #     - FYI: The commmand `rake -D` has details on each of the rake tasks, such as which parameters to use)
 # - Fill in the migration to add ONLY: a string for email, a string for password_digest, and the default timestamps (e.g. `t.timestamps null: false`) **did it
 # - After creating the migration, run it with `rake db:migrate`  ***********done
-# - Then, copy the schema changes over to your test database with `rake db:test:prepare` ****i had an error here?
+# - Then, copy the schema changes over to your test database with `rake db:test:prepare` ****horray it finally works
 # - Implement the route for accepting the form input (for RESTful routing, it should be a POST to "/users") ***I did it
 # - Add validations (and tests!) for the User model (reference spec/models/task_spec.rb for this)
 # - Add a flash message to indicate whether creation of the new User was a success or a failure

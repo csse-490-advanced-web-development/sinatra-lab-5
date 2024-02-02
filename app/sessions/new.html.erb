@@ -1,5 +1,5 @@
-<h1>Lets make a new Account!</h1>
-<form method="POST" action="/users" enctype="multipart/form-data">
+<h1>Lets log in your account!</h1>
+<form method="POST" action="/sessions" enctype="multipart/form-data">
 <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
     
     <label for="email">Email</label>
@@ -8,8 +8,6 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
 
-    <label for="password_confirmation">Confirm Password</label>
-    <input type="password" name="password_confirmation" id="password_confirmation" >
     
-    <button type="submit">Sign Up</button>
+    <button type="submit">Log in</button>
 </form>

@@ -26,22 +26,15 @@ class UsersController < ApplicationController
     #   # Hint: `validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is not a valid email address" }`
     # end
 
-    #if the password == confirmed password
-    if params[:password] == params[:confirm]
 
-      user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:confirm])
+      user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
       if user.save
-        flash[:notice] = "Thanks for signing up! You may now log in!"
         redirect '/sessions/new'
+        flash[:notice] = "Thanks for signing up! You may now log in!"
       else
         flash.now[:errors] = user.errors.full_messages.join("; ")
         erb :"users/new.html"
         end
-    #if not,    
-    else
-      flash.now[:errors] = "doesn't match Password"
-      erb :"users/new.html"
-      end
     end
 
 
