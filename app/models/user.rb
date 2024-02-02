@@ -11,7 +11,8 @@
 class User < ActiveRecord::Base
     has_secure_password
   
-    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "is not a valid email address" }
+    validates :email, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP, message: "It is not a valid email address"}
     validates :password, presence: true, confirmation: true
     validates :password_confirmation, presence: true
   end
+

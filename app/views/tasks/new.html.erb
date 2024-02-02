@@ -6,14 +6,30 @@
 #   <input type="submit" value="Save">
 # </form>
 
+# <h1>Sign Up</h1>
+# <form method="POST" action="/users" enctype="multipart/form-data">
+#   <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
+#   <label for="email">Email</label>
+#   <input type="email" name="email" id="email" value="<%= email %>">
+#   <label for="password">Password</label>
+#   <input type="password" name="password" id="password">
+#   <label for="password-confirmation">Confirm Password</label>
+#   <input type="password" name="password_confirmation" id="password-confirmation">
+#   <button type="submit" >Sign Up</button>
+# </form>
+
 <h1>Sign Up</h1>
 <form method="POST" action="/users" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
+  
   <label for="email">Email</label>
-  <input type="email" name="email" id="email" value="<%= email %>">
+  <input type="email" name="email" id="email" value="<%= defined?(email) ? email : '' %>" required>
+  
   <label for="password">Password</label>
-  <input type="password" name="password" id="password">
+  <input type="password" name="password" id="password" required>
+  
   <label for="password-confirmation">Confirm Password</label>
-  <input type="password" name="password_confirmation" id="password-confirmation">
+  <input type="password" name="password_confirmation" id="password-confirmation" required>
+  
   <button type="submit">Sign Up</button>
 </form>
