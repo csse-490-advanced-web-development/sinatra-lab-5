@@ -12,6 +12,7 @@ require_relative '../spec_helper'
 #     - FYI: The commmand `rake -D` has details on each of the rake tasks, such as which parameters to use)
 # - Fill in the migration to add ONLY: a string for email, a string for password_digest, and the default timestamps (e.g. `t.timestamps null: false`)
 # - After creating the migration, run it with `rake db:migrate`
+# - Had to add `rake db:environment:set` to get the next line to work
 # - Then, copy the schema changes over to your test database with `rake db:test:prepare`
 # - Implement the route for accepting the form input (for RESTful routing, it should be a POST to "/users")
 # - Add validations (and tests!) for the User model (reference spec/models/task_spec.rb for this)
@@ -19,7 +20,7 @@ require_relative '../spec_helper'
 #   - Hint: `flash[:notice] = "Thanks for signing up! You may now log in!"`
 
 feature "User Authentication", js: true do
-  scenario "signing up successfully and then logging in", skip: "Step 3: Unskip this test and read the instructions above" do
+  scenario "signing up successfully and then logging in Step 3: " do
     visit "/"
     click_link "Sign Up"
     # ^-- This new link is in app/views/layout.erb
@@ -33,7 +34,7 @@ feature "User Authentication", js: true do
     #     actually created.  Strictly speaking, this doesn't belong in an integration test because
     #     integration tests are written from the perspective of the end-user, and they wouldn't be
     #     able to look into the database.
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
+    "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "example.com is a great domain to use for testing"
     click_button "Log In"
@@ -41,7 +42,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign Up")
   end
 
-  scenario "sign up failure", skip: "Step 3: Unskip this test and read the instructions above" do
+  scenario "sign up failure Step 3: " do
     visit "/"
     click_link "Sign Up"
     # We are entirely skipping filling in the sign up form,
@@ -61,7 +62,7 @@ feature "User Authentication", js: true do
     click_button "Sign Up"
     page.should have_content("Thanks for signing up! You may now log in!")
 
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
+    "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "rosemary@example.com"
     fill_in "Password", with: "Password1"
     click_button "Log In"
@@ -69,7 +70,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign Up")
   end
 
-  scenario "Signing In with Incorrect Credentials" do #, skip: "Step 5: Unskip Me" do
+  scenario "Signing In with Incorrect Credentials Step 5: Unskip Me" do
     User.create!(email: "jaclyn@example.com", password: "Password!!!!", password_confirmation: "Password!!!!")
     visit "/"
     click_link "Sign In"
@@ -86,7 +87,7 @@ feature "User Authentication", js: true do
     page.should_not have_content("Sign In")
   end
 
-  scenario "Signing Out" do #, skip: "Step 6: Unskip Me" do
+  scenario "Signing Out Step 6: Unskip Me" do
     password = "Password!!!!"
     user = User.create!(email: "jaclyn@example.com", password: password, password_confirmation: password)
     login_as(user, password)

@@ -5,9 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Simple Photo Processor</title>
-
+  <title>Simple TODO App</title>
   <link rel="stylesheet" href="/stylesheets/main.css">
   <link rel="icon" href="/images/favicon.png'">
 </head>
@@ -15,13 +13,16 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
-    <a href="/users/new">Sign Up</a>
-    <a href="/sessions/new">Sign In</a>
+    <% if session[:user_id] %>
+      <button onclick="location.href='/sessions/signout'">Sign Out</button>
+    <% else %>
+      <a href="/users/new">Sign Up</a>
+      <a href="/sessions/new">Sign In</a>
+    <% end %>
   </div>
   <div class="container">
-    <%= styled_flash %>
-    <%= yield %>
+    <%== styled_flash %>
+    <%== yield %>
   </div>
 </body>
-
 </html>

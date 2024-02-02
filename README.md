@@ -4,6 +4,7 @@ Lab 5: Security, Authentication, Authorization, and a SPA day for our TODO App
 
 ## Project Setup
 
+heroku link: https://rippergm-lab5-74fdf312206f.herokuapp.com/
 
 ### Cloning and Installing Dependencies
 
@@ -59,6 +60,8 @@ $ heroku create
 
 # Create the postgres database
 $ heroku addons:create heroku-postgresql:mini
+
+$ heroku run rake db:migrate
 
 $ git push heroku main
 $ heroku run rake db:migrate

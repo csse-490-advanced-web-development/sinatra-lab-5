@@ -6,16 +6,14 @@
   guide shows how to "read" data using ActiveRecord: https://guides.rubyonrails.org/active_record_basics.html#read
 -->
 <h1>If you can dream it, you can TODO it!</h1>
-
 <ul id="todos">
   <% tasks.each do |task| %>
     <li class="task">
-      <a href="/tasks/<%=task.id %>"><%= task.description %></a>
+      <a href="/tasks/<%= task.id %>"><%= task.description %></a>
     </li>
   <% end %>
 </ul>
 <% if Task.all.empty? %>
 <p>There are no tasks remaining! You should add one!</p>
 <% end %>
-
 <a href="/tasks/new">Add task</a>
