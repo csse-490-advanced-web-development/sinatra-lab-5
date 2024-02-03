@@ -33,7 +33,7 @@ feature "Managing Tasks", js: true do
     expect_task_list_to_be_exactly("Follow the test instructions")
   end
 
-  scenario "creating a new todo item with HTML content", skip: "Step 1: Unskip this test" do
+  scenario "creating a new todo item with HTML content", "Step 1: Unskip this test" do
     visit "/"
     click_link "Add task"
     fill_in "Task Description", with: "Be <strong>bold</strong> all day!"

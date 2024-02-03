@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     erb :"tasks/new.html"
   end
 
-  post '/tasks' do
+  post '/tasks/create' do
     task = Task.new(description: params[:description])
 
     if task.save
