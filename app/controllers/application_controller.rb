@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Application
     set :logger, logger
     ActiveRecord::Base.logger = logger
     enable :sessions
+<<<<<<< HEAD
     set :erb, :escape_html => true
+=======
+    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+>>>>>>> ddb19a05d6e5b73062e83180580e1b4a129ae049
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
     use Rack::Protection
