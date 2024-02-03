@@ -1,6 +1,6 @@
 require './config/environment'
 require 'erubi'
-
+# require 'bcrypt'
 
 
 class ApplicationController < Sinatra::Application
@@ -33,4 +33,5 @@ class ApplicationController < Sinatra::Application
   get '/' do
     redirect "/tasks"
   end
+  
 end

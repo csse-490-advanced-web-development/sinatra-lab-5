@@ -10,11 +10,11 @@
 <ul id="todos">
   <% tasks.each do |task| %>
     <li class="task">
-      <a href="/tasks/<%=task.id %>"><%== task.description %></a>
+      <a href="/tasks/<%== hattr task.id %>"><%= task.description %></a>
     </li>
   <% end %>
 </ul>
-<% if Task.all.empty? %>
+<% if tasks.empty? %>
 <p>There are no tasks remaining! You should add one!</p>
 <% end %>
 
