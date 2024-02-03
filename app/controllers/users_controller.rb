@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:sign_up_email] = nil
       if user.save
         flash[:notice] = "Thanks for signing up! You may now log in!"
-        redirect "/"
+        redirect "/sessions/new"
       else
         session[:sign_up_email] = params[:email]
         flash[:errors] = user.errors.full_messages.join("; ")

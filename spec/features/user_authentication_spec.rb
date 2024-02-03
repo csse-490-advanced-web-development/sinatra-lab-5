@@ -33,7 +33,6 @@ feature "User Authentication", js: true do
     #     actually created.  Strictly speaking, this doesn't belong in an integration test because
     #     integration tests are written from the perspective of the end-user, and they wouldn't be
     #     able to look into the database.
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "example.com is a great domain to use for testing"
     click_button "Log In"
@@ -61,18 +60,14 @@ feature "User Authentication", js: true do
     click_button "Sign Up"
     page.should have_content("Thanks for signing up! You may now log in!")
 
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "rosemary@example.com"
     fill_in "Password", with: "Password1"
     click_button "Log In"
     page.should have_content("You are logged in as rosemary@example.com")
     page.should_not have_content("Sign Up")
   end
-<<<<<<< HEAD
-end
-=======
 
-  scenario "Signing In with Incorrect Credentials" do #, skip: "Step 5: Unskip Me" do
+  scenario "Signing In with Incorrect Credentials" do
     User.create!(email: "jaclyn@example.com", password: "Password!!!!", password_confirmation: "Password!!!!")
     visit "/"
     click_link "Sign In"
@@ -89,7 +84,7 @@ end
     page.should_not have_content("Sign In")
   end
 
-  scenario "Signing Out" do #, skip: "Step 6: Unskip Me" do
+  scenario "Signing Out" do
     password = "Password!!!!"
     user = User.create!(email: "jaclyn@example.com", password: password, password_confirmation: password)
     login_as(user, password)
@@ -101,4 +96,3 @@ end
     page.should_not have_content("Sign Out")
   end
 end
->>>>>>> ddb19a05d6e5b73062e83180580e1b4a129ae049
