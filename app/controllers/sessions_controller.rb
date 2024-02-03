@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
     get '/sessions/new' do
-      email = session[:sign_in_email] || ""
-      session[:sign_in_email] = nil
-      erb :"sessions/new.html", locals: {email: email}
+        erb :"sessions/new.html"
     end
   
     post '/sessions' do
@@ -11,6 +9,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect "/"
       else
+
         session[:sign_in_email] = params[:email]
         flash[:errors] = "Invalid email or password"
         redirect "/sessions/new"

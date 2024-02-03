@@ -7,14 +7,11 @@
 #
 
 
-
 class User < ActiveRecord::Base
-    has_secure_password
-  
-    validates :email, presence: true
-    validates :email, uniqueness: true
-    validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: "is not a valid email address"}
-    validates :password, presence: true, confirmation: true
-    validates :password_confirmation, presence: true
-  end
+  has_secure_password
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: "is not a valid email address"}
 
+  validates :password_confirmation, presence: true 
+end

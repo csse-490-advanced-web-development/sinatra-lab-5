@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       else
         session[:sign_up_email] = params[:email]
         flash[:errors] = user.errors.full_messages.join("; ")
-        redirect "/users/new"
+        erb :"users/new.html"
+
       end
     end
   end
