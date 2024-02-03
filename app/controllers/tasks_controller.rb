@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   get '/tasks' do
     tasks = Task.all
-    erb :"tasks/index.html", locals: { tasks: Task.all }
+    erb :"tasks/index.html", locals: {tasks: Task.all}
   end
 
   get '/tasks/new' do

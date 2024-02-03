@@ -33,7 +33,7 @@ feature "User Authentication", js: true do
     #     actually created.  Strictly speaking, this doesn't belong in an integration test because
     #     integration tests are written from the perspective of the end-user, and they wouldn't be
     #     able to look into the database.
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
+    #skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "example.com is a great domain to use for testing"
     click_button "Log In"
@@ -61,7 +61,7 @@ feature "User Authentication", js: true do
     click_button "Sign Up"
     page.should have_content("Thanks for signing up! You may now log in!")
 
-    skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
+    #skip "Step 5: Unskip Me. FYI, this test is assuming that creating a user redirects to the login page at /sessions/new"
     fill_in "Email", with: "rosemary@example.com"
     fill_in "Password", with: "Password1"
     click_button "Log In"
