@@ -146,6 +146,7 @@ DEPENDENCIES
   erubi
   pg
   puma
+  rack-protection
   rake
   rerun
   rspec
