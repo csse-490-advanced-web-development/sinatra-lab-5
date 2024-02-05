@@ -48,6 +48,7 @@ GEM
       ruby2_keywords
     erubi (1.12.0)
     ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -68,9 +69,12 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
+    pg (1.5.4-x64-mingw-ucrt)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -135,6 +139,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-23
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES
