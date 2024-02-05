@@ -6,7 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Simple Photo Processor</title>
+  <title>To dos</title>
 
   <link rel="stylesheet" href="/stylesheets/main.css">
   <link rel="icon" href="/images/favicon.png'">
@@ -15,12 +15,24 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
-    <a href="/users/new">Sign Up</a>
-    <a href="/sessions/new">Sign In</a>
+
+    <% if session[:loggedin] %>
+
+    <form method="post" action="/sessions" enctype="multipart/form-data">
+    <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">Sign Out</button>
+    </form>
+
+    <% else %>
+      <a href="/users/new">Sign Up</a>
+      <a href="/sessions/new">Sign In</a>
+    <% end %>
+
   </div>
   <div class="container">
-    <%= styled_flash %>
-    <%= yield %>
+    <%== styled_flash %>
+    <%== yield %>
   </div>
 </body>
 
