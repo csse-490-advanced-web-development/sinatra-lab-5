@@ -3,13 +3,13 @@
 source "https://rubygems.org"
 
 gem "bcrypt"
-gem "erubi"
 gem "pg"
 gem "puma"
 gem "rake"
 gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
+gem "erubi"
 gem 'securerandom'
 
 group :development do
