@@ -9,18 +9,14 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect "/"
       else
-
-        session[:sign_in_email] = params[:email]
         flash[:errors] = "Invalid email or password"
-        redirect "/sessions/new"
+        erb :"sessions/new.html"
       end
     end
   
-    delete '/sessions' do
-      if session[:user_id] then
-        session[:user_id] = nil
-        flash[:notice] = "You have been logged out."
-      end
+    delete '/session' do
+      session.destroy
+      flash[:notice] = "You have been logged out."
       redirect "/"
     end
   end

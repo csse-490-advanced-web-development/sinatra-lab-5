@@ -2,7 +2,7 @@ require './config/environment'
 require 'rack/protection'
 require 'erubi'
 # require 'bcrypt'
-
+require 'securerandom'
 
 class ApplicationController < Sinatra::Application
   configure do
@@ -32,15 +32,24 @@ class ApplicationController < Sinatra::Application
     # https://sinatrarb.com/protection/authenticity_token
   end
 
+  # get '/' do
+  #   redirect "/tasks"
+  # end
+  # helpers do
+  #   def hattr(text)
+  #     Rack::Utils.escape_path(text.to_s)
+  #   end
+  #   def current_user
+  #     User.find_by(id: session[:user_id])
+  #   end
+  # end
+
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   get '/' do
     redirect "/tasks"
-  end
-  helpers do
-    def hattr(text)
-      Rack::Utils.escape_path(text.to_s)
-    end
-    def current_user
-      User.find_by(id: session[:user_id])
-    end
   end
 end
