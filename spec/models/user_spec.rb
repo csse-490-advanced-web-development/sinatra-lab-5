@@ -1,6 +1,6 @@
 require_relative "../spec_helper"
 
-describe "User", skip: "Step 4: Unskip this.  I prefilled the model specs for you to make things a little easier." do
+describe "User" do#, skip: "Step 4: Unskip this.  I prefilled the model specs for you to make things a little easier." do
   describe "#create" do
     describe "with valid data" do
       before do
