@@ -33,7 +33,7 @@ feature "Managing Tasks", js: true do
     expect_task_list_to_be_exactly("Follow the test instructions")
   end
 
-  scenario "creating a new todo item with HTML content", skip: "Step 1: Unskip this test" do
+  scenario "creating a new todo item with HTML content" do
     visit "/"
     click_link "Add task"
     fill_in "Task Description", with: "Be <strong>bold</strong> all day!"
@@ -43,6 +43,8 @@ feature "Managing Tasks", js: true do
     expect_task_list_to_be_exactly("Be <strong>bold</strong> all day!")
 
     # Implementation Notes/Hints:
+    #
+    # 0. You must implement a control to globally prevent this security risk, rather than just fixing it in this one place.
     #
     # 1. Read "How do I automatically escape HTML?" in the SinatraRB FAQS: https://sinatrarb.com/faq.html#escape_html
     #

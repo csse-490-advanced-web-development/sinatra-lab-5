@@ -15,13 +15,24 @@
 <body>
   <div class="container">
     <strong>Together, we can TODO it!</strong>
+    <% if !session[:email]%>
     <a href="/users/new">Sign Up</a>
     <a href="/sessions/new">Sign In</a>
+    <% else %>
+    <p>You are logged in as <%= session[:email] %></p>
+    <button id="signOutButton">Sign Out</button>
+    <% end %>
   </div>
   <div class="container">
-    <%= styled_flash %>
-    <%= yield %>
+    <%== styled_flash %>
+    <%== yield %>
   </div>
+
+  <script>
+  document.getElementById("signOutButton").onclick = function() {
+    window.location.href = "/users/signOut";
+  };
+</script>
 </body>
 
 </html>
