@@ -1,4 +1,7 @@
 require './config/environment'
+require 'erubi'
+# require 'bcrypt'
+#require 'securerandom'
 
 class ApplicationController < Sinatra::Application
   configure do
@@ -9,22 +12,40 @@ class ApplicationController < Sinatra::Application
     set :logger, logger
     ActiveRecord::Base.logger = logger
     enable :sessions
+    set :erb, :escape_html => true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
-    # use Rack::Protection
+    use Rack::Protection
     # # `use Rack::Protection` automatically enables all modules except for the
     # # following, which have to be enabled explicitly
-    # use Rack::Protection::AuthenticityToken
-    # use Rack::Protection::EscapedParams
-    # use Rack::Protection::FormToken
-    # use Rack::Protection::RemoteReferrer
+    use Rack::Protection::AuthenticityToken
+    use Rack::Protection::EscapedParams
+    use Rack::Protection::FormToken
+    use Rack::Protection::RemoteReferrer
     #
     # Implementation Note/Hint:
     #
     # You will have to update your forms to include an AuthenticityToken,
     # per the documentation for Rack::Protection::AuthenticityToken:
     # https://sinatrarb.com/protection/authenticity_token
+  end
+
+  # get '/' do
+  #   redirect "/tasks"
+  # end
+  # helpers do
+  #   def hattr(text)
+  #     Rack::Utils.escape_path(text.to_s)
+  #   end
+  #   def current_user
+  #     User.find_by(id: session[:user_id])
+  #   end
+  # end
+
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   get '/' do
