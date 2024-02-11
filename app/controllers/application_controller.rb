@@ -1,8 +1,7 @@
 require './config/environment'
-require 'rack/protection'
 require 'erubi'
 # require 'bcrypt'
-require 'securerandom'
+#require 'securerandom'
 
 class ApplicationController < Sinatra::Application
   configure do
@@ -21,7 +20,7 @@ class ApplicationController < Sinatra::Application
     # # `use Rack::Protection` automatically enables all modules except for the
     # # following, which have to be enabled explicitly
     use Rack::Protection::AuthenticityToken
-    #use Rack::Protection::EscapedParams
+    use Rack::Protection::EscapedParams
     use Rack::Protection::FormToken
     use Rack::Protection::RemoteReferrer
     #
