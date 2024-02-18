@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         else
             #say theres an error
             flash[:notice] = "Sign Up failed"
+            redirect "users/new"
 
         end
     end

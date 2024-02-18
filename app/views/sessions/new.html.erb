@@ -1,6 +1,7 @@
 <h1>Sign In</h1>
 <form method="POST" action="/sessions" enctype="multipart/form-data">
   <label for="description">Email:</label>
+  <input type="hidden" name="authenticity_token" value="<%= Rack::Protection::AuthenticityToken.token(env['rack.session']) %>">
   <input type="text" name="email" id="email">
   <label for="description">Password:</label>
   <input type="password" name="password" id="password">
