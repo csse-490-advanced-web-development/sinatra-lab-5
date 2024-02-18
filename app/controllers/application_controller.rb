@@ -12,13 +12,13 @@ class ApplicationController < Sinatra::Application
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
     # Step 2: Enable Rack::Protection by uncommenting the following lines:
     #
-    # use Rack::Protection
-    # # `use Rack::Protection` automatically enables all modules except for the
-    # # following, which have to be enabled explicitly
-    # use Rack::Protection::AuthenticityToken
-    # use Rack::Protection::EscapedParams
-    # use Rack::Protection::FormToken
-    # use Rack::Protection::RemoteReferrer
+    use Rack::Protection
+    # `use Rack::Protection` automatically enables all modules except for the
+    # following, which have to be enabled explicitly
+    use Rack::Protection::AuthenticityToken
+    use Rack::Protection::EscapedParams
+    use Rack::Protection::FormToken
+    use Rack::Protection::RemoteReferrer
     #
     # Implementation Note/Hint:
     #
@@ -30,4 +30,5 @@ class ApplicationController < Sinatra::Application
   get '/' do
     redirect "/tasks"
   end
+
 end
